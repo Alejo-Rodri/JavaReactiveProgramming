@@ -10,6 +10,13 @@ public class Lec04FluxCreateDownstreamDemand {
     private static final Logger log = LoggerFactory.getLogger(Lec04FluxCreateDownstreamDemand.class);
 
     public static void main(String[] args) {
+        // por defecto el flux create es eager y se van a hacer los calculos y las computaciones
+        // antes del primer subscriptor y request
+        produceEarly();
+
+        // el comportamiento por defecto eager puede ser util pero como siempre depende
+        // si se quiere poner lazy se puede utilizar fluxSink.onRequest() el cual como se espera
+        // no hace nada hasta que se haga la peticion
         produceOnDemand();
     }
 
