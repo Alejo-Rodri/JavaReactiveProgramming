@@ -18,7 +18,7 @@ public class Lec10Transform {
         var isDebugEnabled = true;
         // la idea del transform es meter codigo reutilizable, crear operators/decorators con el
         getCustomers()
-                .transform(isDebugEnabled ? addDebugger() : Function.identity())
+                    .transform(isDebugEnabled ? addDebugger() : Function.identity())
                 .subscribe(Util.subscriber("customers"));
         getPurchaseOrders()
                 .transform(addDebugger())
