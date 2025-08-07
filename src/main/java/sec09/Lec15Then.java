@@ -17,10 +17,16 @@ public class Lec15Then {
     private static final Logger log = LoggerFactory.getLogger(Lec15Then.class);
 
     public static void main(String[] args) {
-        saveRecords(List.of("a", "b", "c"))
+        var records = List.of("a", "b", "c");
+        saveRecords(records)
                 // to use when we're interested in the completed signal
-                .then()
+                //.then()
+                .then(sendNotification(records))
                 .subscribe(Util.subscriber("then"));
+
+        Flux<String> flux = Flux.just("a", "b", "c");
+        flux.startWith(flux)
+                        .subscribe(Util.subscriber("test"));
 
         Util.sleepSeconds(5);
     }
